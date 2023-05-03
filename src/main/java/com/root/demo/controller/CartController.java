@@ -54,9 +54,11 @@ public class CartController {
     @GetMapping("")
     @Operation(summary = "Get all active carts", description = "Get all active carts")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200")
+            @ApiResponse(responseCode = "200", content = @Content(
+                    schema = @Schema(implementation = CartListRS.class)
+            ))
     })
-    public ResponseEntity<?> getAllCartActive() {
+    public ResponseEntity<CartListRS> getAllCartActive() {
         CartListResult result = cartService.getList();
         ResponseEntity responseEntity;
         if (result.getStatusCode().equals(StatusCode.SUCCESS)) {
@@ -71,7 +73,9 @@ public class CartController {
     @PostMapping("")
     @Operation(summary = "Create new shopping cart", description = "Create a new cart with a list of products in it.")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200")
+            @ApiResponse(responseCode = "200", content = @Content(
+                    schema = @Schema(implementation = CartCreateRS.class)
+            ))
     })
     public ResponseEntity<CartCreateRS> createCart(@RequestBody CartRQ cartRQ) {
 
@@ -93,7 +97,7 @@ public class CartController {
                     schema = @Schema(implementation = CartDTO.class)
             ))
     })
-    public ResponseEntity<?> getCartDetail(@PathVariable("id") String id) {
+    public ResponseEntity<CartDTO> getCartDetail(@PathVariable("id") String id) {
         CartDetailResult result = cartService.getDetail(id);
         ResponseEntity responseEntity;
         if (result.getStatusCode().equals(StatusCode.SUCCESS)) {

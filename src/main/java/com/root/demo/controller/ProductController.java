@@ -48,7 +48,7 @@ public class ProductController {
                     schema = @Schema(implementation = ProductListRS.class)
             ))
     })
-    public ResponseEntity<?> findAll() {
+    public ResponseEntity<ProductListRS> findAll() {
 
         ProductListResult result = productListUseCase.getList();
 
@@ -69,7 +69,7 @@ public class ProductController {
                     schema = @Schema(implementation = ProductDTO.class)
             ))
     })
-    public ResponseEntity<?> getProductDetail(@PathVariable("id") Integer id) {
+    public ResponseEntity<ProductDTO> getProductDetail(@PathVariable("id") Integer id) {
 
         ProductDetailParam param = ProductDetailParam.builder()
                 .id(id)
@@ -95,7 +95,7 @@ public class ProductController {
             ))
     })
     @PostMapping("")
-    public ResponseEntity<?> createProduct(@RequestBody ProductRQ productRQ) {
+    public ResponseEntity<ProductCreateRS> createProduct(@RequestBody ProductRQ productRQ) {
 
         ProductCreateResult result = productListUseCase.createProduct(convertToDomain.convert(productRQ));
 
