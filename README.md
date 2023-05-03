@@ -369,7 +369,7 @@ A task is set every 10 minutes to check that no car has expired, otherwise it de
 </p>
 
 ### Test Success
-Seven tests were performed and were satisfactory.
+Nine tests were performed and were satisfactory.
 <br>
 <p align="center">
   <img src="https://github.com/BrandPM18/DemoOneBoxCart/blob/main/dist/test.png" alt="Up"/>
